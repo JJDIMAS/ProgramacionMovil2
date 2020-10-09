@@ -32,7 +32,9 @@ class APViewController: UIViewController {
         
         let alert = UIAlertController(title: "Hola \(String(nombre!))", message: "Tu apuesta menos impuestos es de: $\(cantidad!-impuesto). ¿Deseas continuar?", preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil))
+        //alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+        alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { action in
+                self.dismiss(animated: true, completion: nil)            }))
         alert.addAction(UIAlertAction(title: "Cancelar", style: .cancel, handler: nil))
         
         self.present(alert, animated: true)
