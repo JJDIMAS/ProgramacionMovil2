@@ -25,12 +25,12 @@ class APViewController: UIViewController {
     @IBAction func ApostarButton(_ sender: UIButton) {
         nombre = Nombre.text
         cantidad = Float(Cantidad.text!)
-        let impuesto = cantidad! * 0.16
+        let impuesto = (cantidad ?? 0.0) * 0.16
         
         //print(nombre ?? "No hay valor")
         //print(cantidad!-impuesto)
         
-        let alert = UIAlertController(title: "Hola \(String(nombre!))", message: "Tu apuesta menos impuestos es de: $\(cantidad!-impuesto). ¿Deseas continuar?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Hola \(String(nombre!))", message: "Tu apuesta menos impuestos es de: $\((cantidad ?? 400.0) - impuesto). ¿Deseas continuar?", preferredStyle: .alert)
         
         //alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: nil)
         alert.addAction(UIAlertAction(title: "Aceptar", style: .default, handler: { action in

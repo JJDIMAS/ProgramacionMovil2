@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         var numeros = Set<Int>()
         //Hasta que podamos meter n numeros en el set, dejamos de genera números aleatorios
         while numeros.count < 5{
-           numeros.insert(Int.random(in: 0..<5 ))
+           numeros.insert(Int.random(in: 0..<7 ))
         }
         //Guardamos los valores del set en un arreglo
         var valores = Array<Int>()
@@ -40,11 +40,11 @@ class ViewController: UIViewController {
             valores.append(val)
         }
         //Asignamos el valor a los imageview
-        Carta1.image = [ #imageLiteral(resourceName: "F") , #imageLiteral(resourceName: "G"), #imageLiteral(resourceName: "C"), #imageLiteral(resourceName: "A"), #imageLiteral(resourceName: "D"), #imageLiteral(resourceName: "B")][valores[0]]
-        Carta2.image = [ #imageLiteral(resourceName: "F"), #imageLiteral(resourceName: "G") , #imageLiteral(resourceName: "C"), #imageLiteral(resourceName: "A"), #imageLiteral(resourceName: "D"), #imageLiteral(resourceName: "B")][valores[1]]
-        Carta3.image = [ #imageLiteral(resourceName: "F") , #imageLiteral(resourceName: "G") , #imageLiteral(resourceName: "C"), #imageLiteral(resourceName: "A"), #imageLiteral(resourceName: "D"), #imageLiteral(resourceName: "B")][valores[2]]
-        Carta4.image = [ #imageLiteral(resourceName: "F") , #imageLiteral(resourceName: "G") , #imageLiteral(resourceName: "C"), #imageLiteral(resourceName: "A"), #imageLiteral(resourceName: "D"), #imageLiteral(resourceName: "B")][valores[3]]
-        Carta5.image = [ #imageLiteral(resourceName: "F") , #imageLiteral(resourceName: "G") , #imageLiteral(resourceName: "C"), #imageLiteral(resourceName: "A"), #imageLiteral(resourceName: "D"), #imageLiteral(resourceName: "B")][valores[4]]
+        Carta1.image = [ #imageLiteral(resourceName: "F") , #imageLiteral(resourceName: "G"), #imageLiteral(resourceName: "C"), #imageLiteral(resourceName: "A"), #imageLiteral(resourceName: "D"), #imageLiteral(resourceName: "B"), #imageLiteral(resourceName: "I")][valores[0]]
+        Carta2.image = [ #imageLiteral(resourceName: "F"), #imageLiteral(resourceName: "G") , #imageLiteral(resourceName: "C"), #imageLiteral(resourceName: "A"), #imageLiteral(resourceName: "D"), #imageLiteral(resourceName: "B"), #imageLiteral(resourceName: "I")][valores[1]]
+        Carta3.image = [ #imageLiteral(resourceName: "F") , #imageLiteral(resourceName: "G") , #imageLiteral(resourceName: "C"), #imageLiteral(resourceName: "A"), #imageLiteral(resourceName: "D"), #imageLiteral(resourceName: "B"), #imageLiteral(resourceName: "H")][valores[2]]
+        Carta4.image = [ #imageLiteral(resourceName: "F") , #imageLiteral(resourceName: "G") , #imageLiteral(resourceName: "C"), #imageLiteral(resourceName: "A"), #imageLiteral(resourceName: "D"), #imageLiteral(resourceName: "B"), #imageLiteral(resourceName: "I")][valores[3]]
+        Carta5.image = [ #imageLiteral(resourceName: "F") , #imageLiteral(resourceName: "G") , #imageLiteral(resourceName: "C"), #imageLiteral(resourceName: "A"), #imageLiteral(resourceName: "D"), #imageLiteral(resourceName: "B"), #imageLiteral(resourceName: "I")][valores[4]]
 
     }
     func SetBackground(){
