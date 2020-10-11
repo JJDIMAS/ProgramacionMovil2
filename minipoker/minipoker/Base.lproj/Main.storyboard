@@ -59,19 +59,19 @@
                                 <rect key="frame" x="20" y="368" width="374" height="160"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E" translatesAutoresizingMaskIntoConstraints="NO" id="PL9-Tu-MF6">
-                                        <rect key="frame" x="0.0" y="0.0" width="65.333333333333556" height="160"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="65.333333333333329" height="160"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E" translatesAutoresizingMaskIntoConstraints="NO" id="7gY-u2-nog">
-                                        <rect key="frame" x="77.333333333333329" y="0.0" width="65.000000000000213" height="160"/>
+                                        <rect key="frame" x="77.333333333333329" y="0.0" width="64.999999999999986" height="160"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E" translatesAutoresizingMaskIntoConstraints="NO" id="vlJ-z1-a6E">
-                                        <rect key="frame" x="154.33333333333334" y="0.0" width="65.33333333333357" height="160"/>
+                                        <rect key="frame" x="154.33333333333334" y="0.0" width="65.333333333333343" height="160"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E" translatesAutoresizingMaskIntoConstraints="NO" id="spE-Rf-rSu">
-                                        <rect key="frame" x="231.66666666666663" y="0.0" width="65.000000000000227" height="160"/>
+                                        <rect key="frame" x="231.66666666666663" y="0.0" width="65" height="160"/>
                                     </imageView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="E" translatesAutoresizingMaskIntoConstraints="NO" id="15Y-Zd-sEO">
-                                        <rect key="frame" x="308.66666666666669" y="0.0" width="65.333333333333542" height="160"/>
+                                        <rect key="frame" x="308.66666666666669" y="0.0" width="65.333333333333314" height="160"/>
                                     </imageView>
                                 </subviews>
                                 <constraints>
