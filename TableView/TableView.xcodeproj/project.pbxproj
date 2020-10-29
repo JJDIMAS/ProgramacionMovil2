@@ -13,6 +13,8 @@
 		0B2ECA7B2546ADC1009EFEC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0B2ECA7A2546ADC1009EFEC9 /* Assets.xcassets */; };
 		0B2ECA7E2546ADC1009EFEC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0B2ECA7C2546ADC1009EFEC9 /* LaunchScreen.storyboard */; };
 		0B2ECA862546B94B009EFEC9 /* InicioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B2ECA852546B94B009EFEC9 /* InicioViewController.swift */; };
+		0B4B2695254AAB5500A845D7 /* AlumnoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B4B2693254AAB5500A845D7 /* AlumnoCell.swift */; };
+		0B4B2696254AAB5500A845D7 /* AlumnoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0B4B2694254AAB5500A845D7 /* AlumnoCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		0B2ECA7D2546ADC1009EFEC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0B2ECA7F2546ADC1009EFEC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0B2ECA852546B94B009EFEC9 /* InicioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InicioViewController.swift; sourceTree = "<group>"; };
+		0B4B2693254AAB5500A845D7 /* AlumnoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlumnoCell.swift; sourceTree = "<group>"; };
+		0B4B2694254AAB5500A845D7 /* AlumnoCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlumnoCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				0B2ECA7C2546ADC1009EFEC9 /* LaunchScreen.storyboard */,
 				0B2ECA7F2546ADC1009EFEC9 /* Info.plist */,
 				0B2ECA852546B94B009EFEC9 /* InicioViewController.swift */,
+				0B4B2693254AAB5500A845D7 /* AlumnoCell.swift */,
+				0B4B2694254AAB5500A845D7 /* AlumnoCell.xib */,
 			);
 			path = TableView;
 			sourceTree = "<group>";
@@ -128,6 +134,7 @@
 				0B2ECA7E2546ADC1009EFEC9 /* LaunchScreen.storyboard in Resources */,
 				0B2ECA7B2546ADC1009EFEC9 /* Assets.xcassets in Resources */,
 				0B2ECA792546ADBE009EFEC9 /* Main.storyboard in Resources */,
+				0B4B2696254AAB5500A845D7 /* AlumnoCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +148,7 @@
 				0B2ECA762546ADBE009EFEC9 /* ViewController.swift in Sources */,
 				0B2ECA862546B94B009EFEC9 /* InicioViewController.swift in Sources */,
 				0B2ECA742546ADBE009EFEC9 /* AppDelegate.swift in Sources */,
+				0B4B2695254AAB5500A845D7 /* AlumnoCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

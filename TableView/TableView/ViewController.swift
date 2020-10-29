@@ -14,23 +14,18 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     var textfield = UITextField() //Guardar nombre del alumno
     var Alumnos = ["José", "María", "Morelos", "Y", "Pavón"]
     var AlumnoSeleccionado : String?
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Alumnos.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        //Crear ub objeto del tipo UITableViewCell
-        let ObjCelda = UITableViewCell(style: .default, reuseIdentifier: "celda")
-        //Modificar el texto de los renglones
-        ObjCelda.textLabel?.text = Alumnos[indexPath.row]
-        return ObjCelda
-    }
+
     
 
     @IBOutlet weak var Tabla: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        //Registramos la celda personalizada
+        Tabla.register(UINib(nibName: "AlumnoCell", bundle: nil), forCellReuseIdentifier: "celda")
+        
+        
         //Implementar delegados
         Tabla.delegate = self
         Tabla.dataSource = self
@@ -40,6 +35,22 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             Alumnos = alumnosGuardados
         }
         
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return Alumnos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        //Crear un objeto del tipo UITableViewCell
+        //La siguiente linea es cuando no tenemos una estilo definido de la celda
+        //let ObjCelda = UITableViewCell(style: .default, reuseIdentifier: "celda")
+        
+        //Crear un objeto para las celdas personalizadas
+        let ObjCelda = Tabla.dequeueReusableCell(withIdentifier: "celda") as! AlumnoCell
+        //Modificar el texto de los renglones
+        ObjCelda.alumnoLabel.text = Alumnos[indexPath.row]
+        return ObjCelda
     }
     
     //Cuando el usuario selecciona un elemento
