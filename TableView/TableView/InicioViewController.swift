@@ -16,7 +16,7 @@ class InicioViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        NombreAlumnoLabel.text = recibirAlumno!
+        NombreAlumnoLabel.text = "Bienvenido \(recibirAlumno!)"
     }
     
 
