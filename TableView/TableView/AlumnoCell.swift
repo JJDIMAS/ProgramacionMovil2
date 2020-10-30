@@ -11,6 +11,7 @@ import UIKit
 class AlumnoCell: UITableViewCell {
 
     @IBOutlet weak var alumnoLabel: UILabel!
+    @IBOutlet weak var numControlAlumnoLabel: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

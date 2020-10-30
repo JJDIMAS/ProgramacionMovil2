@@ -75,6 +75,7 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="alumnoLabel" destination="WDy-re-cpb" id="qGi-2o-S4C"/>
+                <outlet property="numControlAlumnoLabel" destination="m7D-FA-LYt" id="0lZ-cX-2Px"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
         </tableViewCell>
