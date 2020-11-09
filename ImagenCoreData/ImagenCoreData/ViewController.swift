@@ -7,13 +7,24 @@
 //
 
 import UIKit
+import CoreData
 
-class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+class ViewController: UIViewController ,UIImagePickerControllerDelegate, UINavigationControllerDelegate{
 
     @IBOutlet weak var ImagenPerfil: UIImageView!
+   
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let fetchRequest : NSFetchRequest<EntityImage> = EntityImage.fetchRequest()
+        
+        do {
+            let result = try contexto.fetch(fetchRequest)
+            print(result)
+        } catch let error as NSError {
+            print("Error al cargar la imagen de BD")
+        }
     }
 
     @IBAction func elegirFoto(_ sender: UIButton) {
@@ -32,6 +43,20 @@ class ViewController: UIViewController , UIImagePickerControllerDelegate, UINavi
     }
     
     @IBAction func GuardarImagen(_ sender: UIButton) {
-        
+        //Nos conectamos a la base de datos
+        let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let imageData = ImagenPerfil.image?.pngData()
+        //guard UIImage(data: imageData!) != nil else {return}
+        //image = Image(foto: foto)
+        //let imageInstance = Image(context: contexto)
+        //imageInstance.img = imageData
+        let TablaImagen = NSEntityDescription.insertNewObject(forEntityName: "EntityImage", into: contexto) as!  EntityImage
+        TablaImagen.img = imageData
+        do {
+            try contexto.save()
+            print("Imagen guardada")
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
