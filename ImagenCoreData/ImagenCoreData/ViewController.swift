@@ -16,17 +16,16 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        let arr = DataBaseHelper.instance.getAllImages()
+        print(arr.count)
+        if arr.count>0 {
+            self.ImagenPerfil.image = UIImage(data: arr[0].img!)
+        }
         
-        var arr = getImage()
-        do {
-           try  ImagenPerfil.image = UIImage(data: arr[0].img!)
-           print("Imagen recuperada con éxito")
-        }
-        catch let error{
-            print(error.localizedDescription)
-        }
+
+   }
     
-    }
+    
     func getImage() -> [EntityImage]{
         let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
         let arrImage = [EntityImage]()
@@ -55,20 +54,31 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate, UINavig
     }
     
     @IBAction func GuardarImagen(_ sender: UIButton) {
-        //Nos conectamos a la base de datos
-        let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let imageData = ImagenPerfil.image?.pngData()
-        //guard UIImage(data: imageData!) != nil else {return}
-        //image = Image(foto: foto)
-        //let imageInstance = Image(context: contexto)
-        //imageInstance.img = imageData
-        let TablaImagen = NSEntityDescription.insertNewObject(forEntityName: "EntityImage", into: contexto) as!  EntityImage
-        TablaImagen.img = imageData
-        do {
-            try contexto.save()
-            print("Imagen guardada")
-        } catch {
-            print(error.localizedDescription)
+        
+        //Antes de guardar, nos aseguramos de borrar los datos
+        deleteData()
+        
+        if let jpg = self.ImagenPerfil.image?.jpegData(compressionQuality: 0.75){
+            DataBaseHelper.instance.saveImageinCoreData(at: jpg)
+            
+            
         }
+        
     }
-}
+    
+    func deleteData() {
+        let appDel:AppDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        let context:NSManagedObjectContext = appDel.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "EntityImage")
+        fetchRequest.returnsObjectsAsFaults = false
+        do {
+            let results = try context.fetch(fetchRequest)
+            for managedObject in results {
+                if let managedObjectData: NSManagedObject = managedObject as? NSManagedObject {
+                    context.delete(managedObjectData)
+                }
+            }
+        } catch let error as NSError {
+            print("Deleted all my data in myEntity error : \(error) \(error.userInfo)")
+        }
+    }}
