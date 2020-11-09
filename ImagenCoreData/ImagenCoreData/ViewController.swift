@@ -16,15 +16,27 @@ class ViewController: UIViewController ,UIImagePickerControllerDelegate, UINavig
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-        let fetchRequest : NSFetchRequest<EntityImage> = EntityImage.fetchRequest()
         
+        var arr = getImage()
         do {
-            let result = try contexto.fetch(fetchRequest)
-            print(result)
-        } catch let error as NSError {
-            print("Error al cargar la imagen de BD")
+           try  ImagenPerfil.image = UIImage(data: arr[0].img!)
+           print("Imagen recuperada con éxito")
         }
+        catch let error{
+            print(error.localizedDescription)
+        }
+    
+    }
+    func getImage() -> [EntityImage]{
+        let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        let arrImage = [EntityImage]()
+        let fetchRequest : NSFetchRequest<EntityImage> = EntityImage.fetchRequest()
+        do {
+            let result = try contexto.fetch(fetchRequest) as! [EntityImage]
+        } catch let error{
+            print(error.localizedDescription)
+        }
+        return arrImage
     }
 
     @IBAction func elegirFoto(_ sender: UIButton) {
