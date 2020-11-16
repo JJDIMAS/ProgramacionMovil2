@@ -14,7 +14,8 @@ class ViewController: UIViewController {
     var nombreContacto : String?
     var telefonoContacto: String?
     var direccionContacto: String?
-
+    var index: Int?
+    
     @IBOutlet weak var tablaContactos: UITableView!
     
     let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -23,6 +24,22 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         cargarInfoCoreData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+         self.tablaContactos.reloadData()
+    }
+    
+    
+    func guardarContacto(){
+        do{
+            try self.contexto.save()
+            print("Almacenamiento correcto")
+            //self.cargarInfoCoreData()
+        }catch let error as NSError{
+            print(error.localizedDescription)
+        }
+    }
+    
     @IBAction func agregarContacto(_ sender: UIBarButtonItem) {
         let alerta = UIAlertController(title: "Agregar Contacto", message: "Nuevo contaco", preferredStyle: .alert)
         alerta.addTextField{
@@ -34,17 +51,6 @@ class ViewController: UIViewController {
         alerta.addTextField{
             (direccionAlert) in direccionAlert.placeholder = "Direccion"
         }
-        
-        func guardarContacto(){
-            do{
-                try self.contexto.save()
-                print("Almacenamiento correcto")
-                //self.cargarInfoCoreData()
-            }catch let error as NSError{
-                print(error.localizedDescription)
-            }
-        }
-        
         
         let actionAceptar = UIAlertAction(title: "Aceptar", style: .default) { (_) in
             print("Agregar elemento")
@@ -61,7 +67,7 @@ class ViewController: UIViewController {
             nuevoContacto.nombre = nombreAlert
             nuevoContacto.telefono = Int64(telefonoAlert) ?? 0
             nuevoContacto.direccion = direccionAlert
-            guardarContacto()
+            self.guardarContacto()
             self.Contactos.append(nuevoContacto)
             self.tablaContactos.reloadData()
             
@@ -82,6 +88,9 @@ class ViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     
 }
@@ -96,11 +105,21 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
         celda.detailTextLabel?.text = String(Contactos[indexPath.row].telefono ?? 0)
         return celda;
     }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            contexto.delete(Contactos[indexPath.row])
+            Contactos.remove(at: indexPath.row)
+            self.guardarContacto()
+        }
+        tablaContactos.reloadData()
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         nombreContacto = Contactos[indexPath.row].nombre
         telefonoContacto = String(Contactos[indexPath.row].telefono)
         direccionContacto = Contactos[indexPath.row].direccion
+        index = indexPath.row
         performSegue(withIdentifier: "editarContacto", sender: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -109,6 +128,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
             ObjContacto.recibirNombre = nombreContacto
             ObjContacto.recibirTelefono = telefonoContacto
             ObjContacto.recibirDireccion = direccionContacto
+            ObjContacto.recibirIndex = index
         }
     }
     

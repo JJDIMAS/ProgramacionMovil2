@@ -15,6 +15,7 @@ class editarContactoViewController: UIViewController {
     var recibirNombre : String?
     var recibirTelefono : String?
     var recibirDireccion : String?
+    var recibirIndex : Int?
     
     let contexto = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
@@ -23,6 +24,7 @@ class editarContactoViewController: UIViewController {
     @IBOutlet weak var nombreContacto: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        cargarInfoCoreData()
         
         nombreContacto.text = recibirNombre
         telefonoContacto.text = recibirTelefono
@@ -49,8 +51,16 @@ class editarContactoViewController: UIViewController {
         }
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
     @IBAction func guardarContactoButton(_ sender: UIButton) {
-        
+    
+        Contactos[recibirIndex!].setValue(nombreContacto.text, forKey: "nombre")
+        Contactos[recibirIndex!].setValue(Int64(telefonoContacto.text!), forKey: "telefono")
+        Contactos[recibirIndex!].setValue(direccionContacto.text, forKey: "direccion")
+        guardarContacto()
     }
    
     @IBAction func cancelarButton(_ sender: UIButton) {
