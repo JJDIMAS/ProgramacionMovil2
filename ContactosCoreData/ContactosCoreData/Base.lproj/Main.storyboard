@@ -91,21 +91,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BN1-50-6qP">
-                                <rect key="frame" x="87" y="156" width="240" height="174"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="user3" translatesAutoresizingMaskIntoConstraints="NO" id="BN1-50-6qP">
+                                <rect key="frame" x="87" y="120" width="240" height="174"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0cE-R5-1aJ">
-                                <rect key="frame" x="286" y="701" width="56" height="30"/>
+                                <rect key="frame" x="280" y="721" width="71" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Guardar"/>
                                 <connections>
                                     <action selector="guardarContactoButton:" destination="XYc-oq-cZj" eventType="touchUpInside" id="Y5W-5d-dAn"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dbg-Uo-T9b">
-                                <rect key="frame" x="62" y="701" width="61" height="30"/>
+                                <rect key="frame" x="50" y="721" width="78" height="36"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Cancelar"/>
                                 <connections>
                                     <action selector="cancelarButton:" destination="XYc-oq-cZj" eventType="touchUpInside" id="ous-PP-JNg"/>
@@ -153,6 +155,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgh-qw-NpQ">
+                                <rect key="frame" x="150" y="325" width="112" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Cambiar imagen"/>
+                                <connections>
+                                    <action selector="agregarImagen:" destination="XYc-oq-cZj" eventType="touchUpInside" id="WbO-I4-PHI"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="VJ0-SO-iD6"/>
@@ -187,6 +197,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="user3" width="225" height="225"/>
         <image name="user44" width="225" height="225"/>
     </resources>
 </document>

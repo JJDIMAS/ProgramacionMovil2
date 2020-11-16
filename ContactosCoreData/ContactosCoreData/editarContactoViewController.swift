@@ -31,6 +31,9 @@ class editarContactoViewController: UIViewController {
         direccionContacto.text = recibirDireccion
     }
     
+    @IBAction func agregarImagen(_ sender: UIButton) {
+        //Se cambiar la imagen, ya luego lo añadimos al guardar contacto. 
+    }
     func guardarContacto(){
         do{
             try self.contexto.save()
@@ -61,6 +64,8 @@ class editarContactoViewController: UIViewController {
         Contactos[recibirIndex!].setValue(Int64(telefonoContacto.text!), forKey: "telefono")
         Contactos[recibirIndex!].setValue(direccionContacto.text, forKey: "direccion")
         guardarContacto()
+        navigationController?.popViewController(animated: true)
+        
     }
    
     @IBAction func cancelarButton(_ sender: UIButton) {
