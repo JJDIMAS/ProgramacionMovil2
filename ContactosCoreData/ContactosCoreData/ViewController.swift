@@ -12,6 +12,8 @@ import CoreData
 class ViewController: UIViewController {
     var Contactos = [Contacto]()
     var nombreContacto : String?
+    var telefonoContacto: String?
+    var direccionContacto: String?
 
     @IBOutlet weak var tablaContactos: UITableView!
     
@@ -97,12 +99,16 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         nombreContacto = Contactos[indexPath.row].nombre
+        telefonoContacto = String(Contactos[indexPath.row].telefono)
+        direccionContacto = Contactos[indexPath.row].direccion
         performSegue(withIdentifier: "editarContacto", sender: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editarContacto" {
             let ObjContacto = segue.destination as! editarContactoViewController
             ObjContacto.recibirNombre = nombreContacto
+            ObjContacto.recibirTelefono = telefonoContacto
+            ObjContacto.recibirDireccion = direccionContacto
         }
     }
     

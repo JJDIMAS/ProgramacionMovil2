@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wyw-KA-H5V">
-                                <rect key="frame" x="0.0" y="38" width="414" height="780"/>
+                                <rect key="frame" x="0.0" y="82" width="414" height="736"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="detailButton" hidesAccessoryWhenEditing="NO" indentationLevel="2" indentationWidth="0.0" reuseIdentifier="celda" textLabel="0kh-OF-epE" detailTextLabel="O8U-cR-gJG" imageView="wpN-PP-Pjz" rowHeight="53" style="IBUITableViewCellStyleSubtitle" id="e3v-WT-hjq">
@@ -76,6 +76,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tablaContactos" destination="wyw-KA-H5V" id="0bK-Lf-s0t"/>
+                        <segue destination="XYc-oq-cZj" kind="show" identifier="editarContacto" id="Tak-Sy-gHe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -160,7 +161,6 @@
                         <outlet property="direccionContacto" destination="tdb-YT-tZn" id="3Mp-bJ-hTG"/>
                         <outlet property="nombreContacto" destination="I1c-bl-xQw" id="CFq-7l-8In"/>
                         <outlet property="telefonoContacto" destination="Tpr-v7-4rt" id="sgT-t7-DYT"/>
-                        <segue destination="BYZ-38-t0r" kind="show" identifier="editarContacto" id="5yN-ZR-8S2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Iqc-KU-CVX" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -189,7 +189,4 @@
     <resources>
         <image name="user44" width="225" height="225"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="5yN-ZR-8S2"/>
-    </inferredMetricsTieBreakers>
 </document>
