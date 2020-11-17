@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var telefonoContacto: String?
     var direccionContacto: String?
     var index: Int?
+    var imagen : UIImage?
     
     @IBOutlet weak var tablaContactos: UITableView!
     
@@ -103,6 +104,9 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
         let celda = tablaContactos.dequeueReusableCell(withIdentifier: "celda", for: indexPath);
         celda.textLabel?.text = Contactos[indexPath.row].nombre
         celda.detailTextLabel?.text = String(Contactos[indexPath.row].telefono ?? 0)
+        if(Contactos[indexPath.row].foto != nil){
+            celda.imageView?.image = UIImage(data: Contactos[indexPath.row].foto!)
+        }
         return celda;
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -120,6 +124,11 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
         telefonoContacto = String(Contactos[indexPath.row].telefono)
         direccionContacto = Contactos[indexPath.row].direccion
         index = indexPath.row
+        if(Contactos[indexPath.row].foto != nil){
+            imagen = UIImage(data: Contactos[indexPath.row].foto!)
+        }else{
+            imagen = UIImage(named: "user44")
+        }
         performSegue(withIdentifier: "editarContacto", sender: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,7 +138,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
             ObjContacto.recibirTelefono = telefonoContacto
             ObjContacto.recibirDireccion = direccionContacto
             ObjContacto.recibirIndex = index
-        }
+            ObjContacto.recibirImagen = imagen        }
     }
     
 }

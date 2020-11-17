@@ -168,6 +168,7 @@
                         <viewLayoutGuide key="safeArea" id="VJ0-SO-iD6"/>
                     </view>
                     <connections>
+                        <outlet property="ImagenPerfil" destination="BN1-50-6qP" id="dzc-hr-j0R"/>
                         <outlet property="direccionContacto" destination="tdb-YT-tZn" id="3Mp-bJ-hTG"/>
                         <outlet property="nombreContacto" destination="I1c-bl-xQw" id="CFq-7l-8In"/>
                         <outlet property="telefonoContacto" destination="Tpr-v7-4rt" id="sgT-t7-DYT"/>
