@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     var telefonoContacto: String?
     var direccionContacto: String?
     var index: Int?
+    var imagen : UIImage?
     
     @IBOutlet weak var tablaContactos: UITableView!
     
@@ -59,17 +60,30 @@ class ViewController: UIViewController {
             guard let telefonoAlert = alerta.textFields?[1].text else {return}
             guard let direccionAlert = alerta.textFields?.last?.text else {return}
             
+            if (nombreAlert == "" || telefonoAlert == "" || direccionAlert == "") {
+                //No se ingresó algun dato, no guardamos
+                let aviso = UIAlertController(title: "Error", message: "No puede dejar campos vacíos", preferredStyle: .alert)
+                let actionOk = UIAlertAction(title: "OK", style: .default, handler: nil)
+                aviso.addAction(actionOk)
+                self.present(aviso, animated: true, completion: nil)
+            }else{
+                let nuevoContacto = Contacto(context: self.contexto)
+                
+                nuevoContacto.nombre = nombreAlert
+                nuevoContacto.telefono = Int64(telefonoAlert) ?? 0
+                nuevoContacto.direccion = direccionAlert
+                if let jpg = UIImage(named: "user44")!.jpegData(compressionQuality: 0.75){
+                    nuevoContacto.foto = jpg
+                }
+                self.guardarContacto()
+                self.Contactos.append(nuevoContacto)
+                self.tablaContactos.reloadData()
+            }
+            
             //Guardando en la base de datos
            
             //let entidadContacto = NSEntityDescription.insertNewObject(forEntityName: "Contacto", into: self.contexto) as! Contacto
-            let nuevoContacto = Contacto(context: self.contexto)
-            
-            nuevoContacto.nombre = nombreAlert
-            nuevoContacto.telefono = Int64(telefonoAlert) ?? 0
-            nuevoContacto.direccion = direccionAlert
-            self.guardarContacto()
-            self.Contactos.append(nuevoContacto)
-            self.tablaContactos.reloadData()
+
             
             }
         let actionCancelar = UIAlertAction(title: "Cancelar", style: .default, handler: nil)
@@ -103,6 +117,9 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
         let celda = tablaContactos.dequeueReusableCell(withIdentifier: "celda", for: indexPath);
         celda.textLabel?.text = Contactos[indexPath.row].nombre
         celda.detailTextLabel?.text = String(Contactos[indexPath.row].telefono ?? 0)
+        if(Contactos[indexPath.row].foto != nil){
+            celda.imageView?.image = UIImage(data: Contactos[indexPath.row].foto!)
+        }
         return celda;
     }
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
@@ -120,6 +137,11 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
         telefonoContacto = String(Contactos[indexPath.row].telefono)
         direccionContacto = Contactos[indexPath.row].direccion
         index = indexPath.row
+        if(Contactos[indexPath.row].foto != nil){
+            imagen = UIImage(data: Contactos[indexPath.row].foto!)
+        }else{
+            imagen = UIImage(named: "user44")
+        }
         performSegue(withIdentifier: "editarContacto", sender: nil)
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -129,7 +151,7 @@ extension ViewController : UITableViewDelegate, UITableViewDataSource{
             ObjContacto.recibirTelefono = telefonoContacto
             ObjContacto.recibirDireccion = direccionContacto
             ObjContacto.recibirIndex = index
-        }
+            ObjContacto.recibirImagen = imagen        }
     }
     
 }
