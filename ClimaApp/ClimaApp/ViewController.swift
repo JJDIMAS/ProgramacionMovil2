@@ -9,7 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate {
-
+    
+    let climaManager = ClimaManager()
     @IBOutlet weak var ClimaImageView: UIImageView!
     @IBOutlet weak var temperaturaLabel: UILabel!
     @IBOutlet weak var ciudadLabel: UILabel!
@@ -36,6 +37,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func BuscarButton(_ sender: UIButton) {
         ciudadLabel.text = buscarTextField.text
+        climaManager.fetchClima(nombreCiudad: buscarTextField.text!)
     }
     
 }
