@@ -36,6 +36,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func BuscarButton(_ sender: UIButton) {
+        print("BuscarButtonWorking")
         ciudadLabel.text = buscarTextField.text
         climaManager.fetchClima(nombreCiudad: buscarTextField.text!)
     }

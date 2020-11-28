@@ -9,7 +9,8 @@
 import Foundation
 
 struct ClimaManager {
-    let climaURL = "https://api.openweathermap.org/data/2.5/weather?apid=70b3aadd65957aeac7242719dc0b4fe1&units=metric&lang=es"
+    //let climaURL = "https://api.openweathermap.org/data/2.5/weather?apid=70b3aadd65957aeac7242719dc0b4fe1&units=metric&lang=es"
+    let climaURL = "https://api.openweathermap.org/data/2.5/weather?appid=d6b4dd6466869a2e4f8e11759a67cd75&units=metric&lan=es"
     
     func fetchClima(nombreCiudad: String){
         let urlString = "\(climaURL)&q=\(nombreCiudad)"
@@ -43,11 +44,13 @@ struct ClimaManager {
         
         do {
             let dataDecodificada = try decoder.decode(ClimaData.self, from: climaData)
+            
             print(dataDecodificada.name)
             print(dataDecodificada.cod)
             print(dataDecodificada.main.humidity)
             print(dataDecodificada.main.temp)
             print(dataDecodificada.weather[0].description)
+        
         } catch  {
             print(error)
         }
