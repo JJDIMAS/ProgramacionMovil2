@@ -8,6 +8,7 @@
 
 import Foundation
 
+
 protocol ClimaManagerDelegate {
     func actualizarClima(clima: ClimaModelo)
     func huboError(errorDescription: Error)
@@ -24,6 +25,11 @@ struct ClimaManager {
         let urlString = "\(climaURL)&q=\(nombreCiudad)"
         print(urlString)
     realizarSolicitud(urlString: urlString)
+    }
+    func fetchClima (lat: Double , lon: Double){
+        let urlString = "\(climaURL)&lat=\(lat)&lon=\(lon)"
+        realizarSolicitud(urlString: urlString)
+        
     }
     
     func realizarSolicitud(urlString : String){
@@ -56,7 +62,7 @@ struct ClimaManager {
         
         do {
             let dataDecodificada = try decoder.decode(ClimaData.self, from: climaData)
-            let ObjClima = ClimaModelo(condicionID: dataDecodificada.weather[0].id, nombreCiudad: dataDecodificada.name, descripcionClima: dataDecodificada.weather[0].description, temperaturaCelcius: dataDecodificada.main.temp)
+            let ObjClima = ClimaModelo(condicionID: dataDecodificada.weather[0].id, nombreCiudad: dataDecodificada.name, descripcionClima: dataDecodificada.weather[0].description, temperaturaCelcius: dataDecodificada.main.temp, realFeel: dataDecodificada.main.realFeel, max: dataDecodificada.main.max, min: dataDecodificada.main.min, speed: dataDecodificada.wind.speed)
             return ObjClima
             
         } catch  {
