@@ -46,12 +46,12 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.23170755949999999" green="0.72929885790000004" blue="0.64741474330000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nublado_2" translatesAutoresizingMaskIntoConstraints="NO" id="2g5-45-wEE">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="nublado_3" translatesAutoresizingMaskIntoConstraints="NO" id="2g5-45-wEE">
                                 <rect key="frame" x="0.0" y="124" width="414" height="680"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cloud_11" translatesAutoresizingMaskIntoConstraints="NO" id="qTF-xO-HRI">
-                                <rect key="frame" x="89" y="223" width="240" height="174"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="cloud_6" translatesAutoresizingMaskIntoConstraints="NO" id="qTF-xO-HRI">
+                                <rect key="frame" x="89" y="161" width="240" height="236"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="C" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1uR-er-lFc">
@@ -62,7 +62,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="22" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ANg-MX-Sh7">
-                                <rect key="frame" x="167" y="375" width="44" height="46"/>
+                                <rect key="frame" x="146" y="375" width="65" height="46"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="38"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -86,6 +86,12 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="re9-w3-WiZ">
+                                <rect key="frame" x="81" y="511" width="241" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Morelia" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d66-oH-dsf">
                                 <rect key="frame" x="167" y="452" width="163" height="33"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -95,10 +101,14 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="re9-w3-WiZ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Jli-n5-kpV"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="ClimaImageView" destination="qTF-xO-HRI" id="prB-jo-gd2"/>
+                        <outlet property="DescipcionLabel" destination="re9-w3-WiZ" id="y2V-51-LJz"/>
                         <outlet property="buscarTextField" destination="RKs-Ml-CJM" id="PcP-vc-933"/>
                         <outlet property="ciudadLabel" destination="d66-oH-dsf" id="42W-r9-PGS"/>
                         <outlet property="temperaturaLabel" destination="ANg-MX-Sh7" id="Zb3-QW-guq"/>
@@ -110,9 +120,9 @@
         </scene>
     </scenes>
     <resources>
-        <image name="cloud_11" width="200" height="200"/>
+        <image name="cloud_6" width="200" height="200"/>
         <image name="location_blue" width="512" height="512"/>
-        <image name="nublado_2" width="780" height="405"/>
+        <image name="nublado_3" width="400" height="258"/>
         <image name="search_icon_n" width="224" height="224"/>
     </resources>
 </document>

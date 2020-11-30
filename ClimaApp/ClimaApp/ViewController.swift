@@ -9,20 +9,45 @@
 import UIKit
 
 class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegate {
+    func huboError(errorDescription: Error) {
+        DispatchQueue.main.async {
+            if(errorDescription.localizedDescription.contains("missing")){
+                //Error de nombre en ciudad
+                let aviso = UIAlertController(title: "Error", message: "La ciudad ingresada no existe", preferredStyle: .alert)
+                let actionOk = UIAlertAction(title: "Aceptar", style: .default, handler: nil)
+                aviso.addAction(actionOk)
+                self.present(aviso, animated: true, completion: nil)            }
+        }
+
+    }
+    
     func actualizarClima(clima: ClimaModelo) {
-        print(clima.descripcionClima)
+        //print(clima.descripcionClima)
+        DispatchQueue.main.async {
+            self.temperaturaLabel.text = clima.temperaturaDecimal
+            self.ciudadLabel.text = clima.nombreCiudad
+            self.DescipcionLabel.text = clima.descripcionClima
+            self.ClimaImageView.image = UIImage(named: clima.condicionClima[0])
+            
+        }
+
+        
     }
     
     
-    let climaManager = ClimaManager()
+    
+    
+    var climaManager = ClimaManager()
     @IBOutlet weak var ClimaImageView: UIImageView!
     @IBOutlet weak var temperaturaLabel: UILabel!
     @IBOutlet weak var ciudadLabel: UILabel!
     @IBOutlet weak var buscarTextField: UITextField!
+    @IBOutlet weak var DescipcionLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         buscarTextField.delegate = self
+        climaManager.delegado = self
     }
     //Boton de buscar
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -46,5 +71,8 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegat
         climaManager.fetchClima(nombreCiudad: buscarTextField.text!)
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
 }
 
