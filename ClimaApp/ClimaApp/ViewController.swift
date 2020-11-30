@@ -70,8 +70,9 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegat
         // Do any additional setup after loading the view.
         buscarTextField.delegate = self
         climaManager.delegado = self
-
-        //locationManager.requestLocation()
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.requestLocation()
     }
     //Boton de buscar
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -96,8 +97,7 @@ class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegat
     }
     
     @IBAction func buscarUbicacion(_ sender: UIButton) {
-        locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
+
         locationManager.requestLocation()
     }
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

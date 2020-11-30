@@ -19,7 +19,7 @@ struct ClimaManager {
     var delegado : ClimaManagerDelegate?
     
     //let climaURL = "https://api.openweathermap.org/data/2.5/weather?apid=70b3aadd65957aeac7242719dc0b4fe1&units=metric&lang=es"
-    let climaURL = "https://api.openweathermap.org/data/2.5/weather?appid=d6b4dd6466869a2e4f8e11759a67cd75&units=metric&lan=es"
+    let climaURL = "https://api.openweathermap.org/data/2.5/weather?appid=d6b4dd6466869a2e4f8e11759a67cd75&units=metric&lang=es"
     
     func fetchClima(nombreCiudad: String){
         let urlString = "\(climaURL)&q=\(nombreCiudad)"
@@ -62,7 +62,7 @@ struct ClimaManager {
         
         do {
             let dataDecodificada = try decoder.decode(ClimaData.self, from: climaData)
-            let ObjClima = ClimaModelo(condicionID: dataDecodificada.weather[0].id, nombreCiudad: dataDecodificada.name, descripcionClima: dataDecodificada.weather[0].description, temperaturaCelcius: dataDecodificada.main.temp, realFeel: dataDecodificada.main.realFeel, max: dataDecodificada.main.max, min: dataDecodificada.main.min, speed: dataDecodificada.wind.speed)
+            let ObjClima = ClimaModelo(condicionID: dataDecodificada.weather[0].id, nombreCiudad: dataDecodificada.name, descripcionClima: dataDecodificada.weather[0].description, temperaturaCelcius: dataDecodificada.main.temp, realFeel: dataDecodificada.main.feels_like, max: dataDecodificada.main.temp_max, min: dataDecodificada.main.temp_min, speed: dataDecodificada.wind.speed)
             return ObjClima
             
         } catch  {
