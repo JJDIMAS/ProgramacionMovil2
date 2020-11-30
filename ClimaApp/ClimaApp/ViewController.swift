@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITextFieldDelegate {
+class ViewController: UIViewController, UITextFieldDelegate, ClimaManagerDelegate {
+    func actualizarClima(clima: ClimaModelo) {
+        print(clima.descripcionClima)
+    }
+    
     
     let climaManager = ClimaManager()
     @IBOutlet weak var ClimaImageView: UIImageView!
@@ -23,6 +27,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     //Boton de buscar
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         ciudadLabel.text = buscarTextField.text
+        climaManager.fetchClima(nombreCiudad: buscarTextField.text!)
         return true
     }
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
