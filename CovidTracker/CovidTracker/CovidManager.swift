@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ClimaManagerDelegate {
-   func actualizarDatos(datos: covidModel)
+   func actualizarDatos(covid: covidModel)
    func huboError(errorDescription: Error)
 }
 
