@@ -14,13 +14,14 @@ protocol ClimaManagerDelegate {
 
 struct CovidManager{
     let CovidUrl = "https://corona.lmao.ninja/v3/covid-19/countries/"
-   
+    var delegado : ClimaManagerDelegate?
+    
     func fetchCovid(country: String){
         let urlString = "\(CovidUrl)/\(country)"
-        //realizarSolicitud(urlString: urlString)
+        realizarSolicitud(urlString: urlString)
         
     }
-/*    func realizarSolicitud(urlString : String){
+    func realizarSolicitud(urlString : String){
         //Crear URL
         if let url = URL(string: urlString){
             //crear el objeto URLSession
@@ -37,13 +38,14 @@ struct CovidManager{
                 if let DatosSeguros = data {
                     //Decodificar el obj JSON de la API
                     //self.parseJSON(climaData: DatosSeguros)
-                    if let clima = self.parseJSON(climaData: DatosSeguros){
-                        self.delegado?.actualizarClima(clima: clima)
-                    }
+                   
+                    // if let clima = self.parseJSON(climaData: DatosSeguros){
+                     //   self.delegado?.actualizarClima(clima: clima)
+                   // }
                 }
             }
             tarea.resume()
         }
-    }*/
+    }
     
 }

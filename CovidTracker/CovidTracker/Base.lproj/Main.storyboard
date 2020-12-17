@@ -126,6 +126,13 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <connections>
+                        <outlet property="BanderaView" destination="fMP-5w-XGY" id="Faj-Ep-ABY"/>
+                        <outlet property="CasosConfimadosLabel" destination="zxa-Ox-i4f" id="3su-Rw-nGJ"/>
+                        <outlet property="DefuncionesConfirmadasLabel" destination="A5d-Td-xGM" id="DaS-cc-YMl"/>
+                        <outlet property="PaisLabel" destination="Fo9-1i-zG5" id="PmB-eR-h1H"/>
+                        <outlet property="RecuperadosConfirmadosLabel" destination="eSR-yR-to8" id="Kvz-UQ-RIe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
