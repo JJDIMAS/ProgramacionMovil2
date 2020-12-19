@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol ClimaManagerDelegate {
-   func actualizarDatos(covid: covidModel)
+protocol CovidManagerDelegate {
+   func actualizarDatos(covid: CovidModel)
    func huboError(errorDescription: Error)
 }
 
 struct CovidManager{
-    let CovidUrl = "https://corona.lmao.ninja/v3/covid-19/countries/"
-    var delegado : ClimaManagerDelegate?
+    let CovidUrl = "https://corona.lmao.ninja/v3/covid-19/countries"
+    var delegado : CovidManagerDelegate?
     
     func fetchCovid(country: String){
         let urlString = "\(CovidUrl)/\(country)"
@@ -39,13 +39,33 @@ struct CovidManager{
                     //Decodificar el obj JSON de la API
                     //self.parseJSON(climaData: DatosSeguros)
                    
-                    // if let clima = self.parseJSON(climaData: DatosSeguros){
-                     //   self.delegado?.actualizarClima(clima: clima)
-                   // }
+                    if let covid_v = self.parseJSON(covidData: DatosSeguros){
+                        self.delegado?.actualizarDatos(covid: covid_v)
+                    }
                 }
             }
             tarea.resume()
         }
     }
-    
+
+    func parseJSON(covidData: Data) -> CovidModel?{
+        let decoder  = JSONDecoder()
+        do{
+       let dataDecodificada = try decoder.decode(CovidData.self, from: covidData)
+           
+            let Pais = dataDecodificada.country
+            let Activos = dataDecodificada.cases
+            let Muertes = dataDecodificada.deaths
+            let Recuperados = dataDecodificada.recovered
+            let Bandera = dataDecodificada.countryInfo.flag
+            
+            // crear el objeto personalizado
+            let ObjetoCovid = CovidModel(numeroCasos: Activos, numeroMuertos: Muertes, numeroRecuperados: Recuperados, bandera: Bandera, nombrePais: Pais)
+            return ObjetoCovid
+        }catch{
+            self.delegado?.huboError(errorDescription: error)
+            //print(error)
+            return nil
+        }
+    }
 }

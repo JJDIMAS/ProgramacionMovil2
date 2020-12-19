@@ -6,9 +6,11 @@
 //
 
 import Foundation
-struct covidModel{
+struct CovidModel{
     let numeroCasos : Int
     let numeroMuertos : Int
     let numeroRecuperados : Int
     //Podemos añadir la propiedad computada casos activos
+    let bandera : String
+    let nombrePais : String
 }

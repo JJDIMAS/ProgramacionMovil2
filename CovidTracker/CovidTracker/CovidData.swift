@@ -6,9 +6,14 @@
 //
 
 import Foundation
-struct covidData : Codable {
+struct CovidData : Codable {
     let country : String
     let cases : Int
     let deaths : Int
     let recovered : Int
+    let countryInfo : CountryInfo
+}
+
+struct CountryInfo : Codable {
+    let flag : String
 }
