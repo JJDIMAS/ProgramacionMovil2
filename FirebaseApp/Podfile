@@ -6,10 +6,8 @@ target 'FirebaseApp' do
   use_frameworks!
 
   # Pods for FirebaseApp
-
-pod 'Firebase/Analytics'
-pod 'Firebase/Auth'
-pod 'Firebase/Firestore'
-pod 'Firebase'
-
+	pod 'Firebase/Analytics'
+	pod 'Firebase/Auth'
+	pod 'Firebase'
+	pod 'Firebase/Firestore'
 end
